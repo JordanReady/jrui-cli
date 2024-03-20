@@ -11,6 +11,7 @@ const init = require('./utils/init');
 const cli = require('./utils/cli');
 const log = require('./utils/log');
 const addComponent = require('./utils/add-component');
+const setup = require('./utils/setup');
 
 const input = cli.input;
 const flags = cli.flags;
@@ -20,6 +21,10 @@ const { clear, debug } = flags;
 	init({ clear });
 	input.includes(`help`) && cli.showHelp(0);
 	debug && log(flags);
+
+	if (input.includes('setup')) {
+		setup();
+	}
 
 	if (input.includes('add')) {
 		const componentNames = input.slice(1);
