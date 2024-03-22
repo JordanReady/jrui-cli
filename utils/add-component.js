@@ -4,14 +4,14 @@ const { execSync } = require('child_process');
 
 function addComponent(componentName) {
 	try {
-		// Install dependencies
-		installDependencies(componentName);
-
 		// Create components folder if it doesn't exist
 		createComponentsFolder();
 
 		// Add component files
 		addComponentFiles(componentName);
+
+		// Install dependencies
+		installDependencies(componentName);
 
 		console.log(`${componentName} component added successfully.`);
 	} catch (error) {
@@ -39,6 +39,13 @@ function installDependencies(componentName) {
 				'framer-motion react-intersection-observer react @types/react';
 			createImgsFolder();
 			addImgFiles(['JRuiLogo.png']);
+			break;
+		case 'userAvatar':
+			dependencies = 'react @types/react';
+			break;
+		case 'userAvatarNextOAuthFirebase':
+			dependencies = 'react @types/react';
+
 			break;
 
 		default:
@@ -100,6 +107,16 @@ function addComponentFiles(componentName) {
 	const componentsDir = path.join(process.cwd(), 'components');
 	copyFile(componentFilesDir, componentsDir, componentName);
 	console.log(`Added ${componentName} component files.`);
+
+	// Handle renaming of files with multiple types
+	if (componentName === 'userAvatarNextOAuthFirebase') {
+		const sourceFile = path.join(
+			componentsDir,
+			'UserAvatarNextOAuthFirebase.tsx'
+		);
+		const targetFile = path.join(componentsDir, 'UserAvatar.tsx');
+		renameFile(sourceFile, targetFile);
+	}
 }
 
 function copyFile(sourceFile, targetDir, componentName) {
@@ -107,6 +124,10 @@ function copyFile(sourceFile, targetDir, componentName) {
 		componentName.charAt(0).toUpperCase() + componentName.slice(1);
 	const destFile = path.join(targetDir, capitalizedComponentName + '.tsx');
 	fs.copyFileSync(sourceFile, destFile);
+}
+
+function renameFile(sourceFile, targetFile) {
+	fs.renameSync(sourceFile, targetFile);
 }
 
 module.exports = addComponent;
