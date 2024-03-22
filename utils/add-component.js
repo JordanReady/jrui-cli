@@ -116,6 +116,7 @@ function addComponentFiles(componentName) {
 		);
 		const targetFile = path.join(componentsDir, 'UserAvatar.tsx');
 		renameFile(sourceFile, targetFile);
+		updateNextConfigFile();
 	}
 }
 
@@ -128,6 +129,34 @@ function copyFile(sourceFile, targetDir, componentName) {
 
 function renameFile(sourceFile, targetFile) {
 	fs.renameSync(sourceFile, targetFile);
+}
+
+function updateNextConfigFile() {
+	const filePath = path.join(__dirname, 'next.config.mjs');
+	const configFileContent = `/** @type {import('next').NextConfig} */
+const nextConfig = {
+  images: {
+    domains: ["lh3.googleusercontent.com"],
+    loader: "default",
+  },
+};
+
+export default nextConfig;
+`;
+
+	try {
+		if (fs.existsSync(filePath)) {
+			// If the file exists, replace its contents
+			fs.writeFileSync(filePath, configFileContent);
+			console.log('next.config.mjs file updated successfully.');
+		} else {
+			// If the file does not exist, create it and write the content
+			fs.writeFileSync(filePath, configFileContent);
+			console.log('next.config.mjs file created successfully.');
+		}
+	} catch (error) {
+		console.error('Error updating next.config.mjs file:', error);
+	}
 }
 
 module.exports = addComponent;
