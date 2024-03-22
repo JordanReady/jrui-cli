@@ -1,5 +1,5 @@
 {
-	"name": "jrui",
+	"name": "jrui-cli",
 	"description": "Allows for installing files and dependencies for custom jrui components",
 	"version": "0.0.6",
 	"license": "UNLICENSED",
