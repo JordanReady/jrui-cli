@@ -46,7 +46,7 @@ function installDependencies(componentName) {
 		case 'userAvatarNextOAuthFirebase':
 			dependencies = 'react @types/react';
 			break;
-		case 'theme-provider':
+		case 'themeProvider':
 			dependencies = 'react @types/react next-themes';
 			npxInstall('shadcn-ui@latest init');
 			break;

@@ -16,11 +16,15 @@ const setup = require('./utils/setup');
 const input = cli.input;
 const flags = cli.flags;
 const { clear, debug } = flags;
+const { components } = require('./utils/cli');
 
 (async () => {
 	init({ clear });
-	input.includes(`help`) && cli.showHelp(0);
+	if (input.includes(`help`)) {
+		cli.showHelp(0);
+	}
 	debug && log(flags);
+	console.log('Available components:');
 
 	if (input.includes('setup')) {
 		setup();

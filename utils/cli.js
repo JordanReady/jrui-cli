@@ -26,15 +26,14 @@ const flags = {
 	},
 	componentName: {
 		type: `string`,
-		alias: `n`,
 		desc: `Name of the component`
 	}
 };
 
 const commands = {
 	help: { desc: `Print help info` },
-	add: { desc: `Add a new component` },
-	setup: { desc: `Setup custom styles in globals.css file` }
+	setup: { desc: `Setup custom styles in globals.css file` },
+	add: { desc: `Add a new component` }
 };
 
 const helpText = meowHelp({
