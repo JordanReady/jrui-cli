@@ -40,7 +40,7 @@ const Tooltip: React.FC<TooltipProps> = ({
 					duration={animationDuration}
 				>
 					<div
-						className={` ${className} mt-1 absolute top-full transform -translate-x-1/2 bg-white dark:bg-[#020817] border border-gradient z-[999] left-[50%]`}
+						className={` ${className} mt-1 absolute top-full transform -translate-x-1/2 bg-white border border-gradient z-[999] left-[50%]`}
 						style={{
 							width: width + 'rem',
 							left: `calc(50% + ${offset}rem)`
