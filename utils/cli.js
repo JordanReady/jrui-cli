@@ -38,7 +38,7 @@ const commands = {
 };
 
 const helpText = meowHelp({
-	name: `jrui-cli`,
+	name: `jrui`,
 	flags,
 	commands
 });

@@ -45,7 +45,13 @@ function installDependencies(componentName) {
 			break;
 		case 'userAvatarNextOAuthFirebase':
 			dependencies = 'react @types/react';
-
+			break;
+		case 'theme-provider':
+			dependencies = 'react @types/react next-themes';
+			npxInstall('shadcn-ui@latest init');
+			break;
+		case 'themeToggle':
+			dependencies = 'react @types/react next-themes lucide-react';
 			break;
 
 		default:
@@ -56,6 +62,13 @@ function installDependencies(componentName) {
 	// Install dependencies
 	console.log('Installing dependencies...');
 	execSync(`npm install ${dependencies}`, {
+		stdio: 'inherit'
+	});
+}
+
+function npxInstall(packageName) {
+	// Execute npx install command
+	execSync(`npx ${packageName}`, {
 		stdio: 'inherit'
 	});
 }
@@ -128,7 +141,12 @@ function copyFile(sourceFile, targetDir, componentName) {
 }
 
 function renameFile(sourceFile, targetFile) {
-	fs.renameSync(sourceFile, targetFile);
+	try {
+		fs.renameSync(sourceFile, targetFile);
+		console.log(`Renamed ${sourceFile} to ${targetFile} successfully.`);
+	} catch (error) {
+		console.error(`Error renaming ${sourceFile} to ${targetFile}:`, error);
+	}
 }
 
 function updateNextConfigFile() {

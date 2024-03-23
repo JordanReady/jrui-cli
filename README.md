@@ -4,10 +4,10 @@ JRUI CLI is a command-line interface (CLI) tool designed to simplify the install
 
 ## Installation
 
-To install JRUI CLI globally, use npm:
+To install JRUI CLI, use npm:
 
 ```bash
-npm install -g jrui-cli
+npm install jrui-cli
 ```
 
 ## How to Use
