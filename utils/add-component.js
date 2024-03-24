@@ -53,6 +53,16 @@ function installDependencies(componentName) {
 		case 'themeToggle':
 			dependencies = 'react @types/react next-themes lucide-react';
 			break;
+		case 'form':
+			dependencies = 'react @types/react';
+			createImgsFolder();
+			addImgFiles(['JRuiLogo.png']);
+			break;
+		case 'authForm':
+			dependencies = 'react @types/react';
+			createImgsFolder();
+			addImgFiles(['JRuiLogo.png']);
+			break;
 
 		default:
 			console.error(`Unknown component: ${componentName}`);
