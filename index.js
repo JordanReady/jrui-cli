@@ -2,7 +2,7 @@
 
 /**
  * jrui-cli
- * Allows for installing files and dependencies for custom jrui components
+ * Allows for installing files and dependencies for custom jrui components, sections, and features
  *
  * @author Jordan Ready <www.jordanready.com>
  */
@@ -11,6 +11,7 @@ const init = require('./utils/init');
 const cli = require('./utils/cli');
 const log = require('./utils/log');
 const addComponent = require('./utils/add-component');
+const createFiles = require('./utils/add-files');
 const setup = require('./utils/setup');
 
 const input = cli.input;
@@ -24,10 +25,22 @@ const { components } = require('./utils/cli');
 		cli.showHelp(0);
 	}
 	debug && log(flags);
-	console.log('Available components:');
+	console.log('You are Awesome!!!');
 
 	if (input.includes('setup')) {
 		setup();
+	}
+
+	if (input.includes('create')) {
+		const filesNames = input.slice(1);
+		if (filesNames.length === 0) {
+			console.error('No file names provided.');
+			process.exit(1);
+		}
+		filesNames.forEach(fileName => {
+			createFiles(fileName);
+		});
+		console.log('All files have been installed! Enjoy!');
 	}
 
 	if (input.includes('add')) {

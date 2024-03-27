@@ -33,7 +33,8 @@ const flags = {
 const commands = {
 	help: { desc: `Print help info` },
 	setup: { desc: `Setup custom styles in globals.css file` },
-	add: { desc: `Add a new component` }
+	add: { desc: `Add a new component` },
+	create: { desc: `Create non-component files` }
 };
 
 const helpText = meowHelp({
