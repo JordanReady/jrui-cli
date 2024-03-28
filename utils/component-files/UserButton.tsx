@@ -9,7 +9,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import Link from 'next/link';
 import { signIn, useSession, signOut } from 'next-auth/react';
-import UserAvatar from './UserAvatarNextOAuthFirebase';
+import UserAvatar from './UserAvatar';
 import { CircleUserRound } from 'lucide-react';
 
 interface UserButtonProps {
