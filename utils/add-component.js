@@ -63,7 +63,11 @@ function installDependencies(componentName) {
 			createImgsFolder();
 			addImgFiles(['JRuiLogo.png']);
 			break;
-
+		case 'userButton':
+			dependencies = 'react @types/react lucide-react';
+			npxInstall('shadcn-ui@latest add dropdown-menu');
+			npxInstall('npx shadcn-ui@latest init');
+			break;
 		default:
 			console.error(`Unknown component: ${componentName}`);
 			return;
