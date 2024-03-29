@@ -67,6 +67,7 @@ function installDependencies(componentName) {
 			dependencies = 'react @types/react lucide-react';
 			npxInstall('shadcn-ui@latest add dropdown-menu');
 			npxInstall('npx shadcn-ui@latest init');
+			updateNextConfigFile();
 			break;
 		default:
 			console.error(`Unknown component: ${componentName}`);
