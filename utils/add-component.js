@@ -165,17 +165,18 @@ function renameFile(sourceFile, targetFile) {
 }
 
 function updateNextConfigFile() {
-	const filePath = path.join(__dirname, 'next.config.mjs');
+	const cwd = process.cwd();
+	const filePath = path.join(cwd, 'next.config.mjs');
 	const configFileContent = `/** @type {import('next').NextConfig} */
-const nextConfig = {
-  images: {
-    domains: ["lh3.googleusercontent.com"],
-    loader: "default",
-  },
-};
-
-export default nextConfig;
-`;
+    const nextConfig = {
+      images: {
+        domains: ["lh3.googleusercontent.com"],
+        loader: "default",
+      },
+    };
+    
+    export default nextConfig;
+    `;
 
 	try {
 		if (fs.existsSync(filePath)) {
@@ -191,5 +192,8 @@ export default nextConfig;
 		console.error('Error updating next.config.mjs file:', error);
 	}
 }
+
+// Call the function
+updateNextConfigFile();
 
 module.exports = addComponent;
