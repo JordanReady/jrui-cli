@@ -1,7 +1,7 @@
 {
 	"name": "jrui-cli",
 	"description": "Allows for installing files and dependencies for custom jrui components, sections, and features",
-	"version": "0.1.7",
+	"version": "0.1.8",
 	"license": "UNLICENSED",
 	"bin": {
 		"jrui": "index.js"

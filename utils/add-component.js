@@ -53,6 +53,9 @@ function installDependencies(componentName) {
 		case 'themeToggle':
 			dependencies = 'react @types/react next-themes lucide-react';
 			break;
+		case 'typed':
+			dependencies = 'react @types/react typed.js';
+			break;
 		case 'form':
 			dependencies = 'react @types/react';
 			createImgsFolder();
