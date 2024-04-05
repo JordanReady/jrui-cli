@@ -38,7 +38,11 @@ const { components } = require('./utils/cli');
 			process.exit(1);
 		}
 		filesNames.forEach(fileName => {
-			createFiles(fileName);
+			if (fileName === 'not-found') {
+				createFiles(fileName, 'tsx'); // Use 'tsx' extension for "not-found"
+			} else {
+				createFiles(fileName, 'ts'); // Use 'ts' extension for other filenames
+			}
 		});
 		console.log('All files have been installed! Enjoy!');
 	}
